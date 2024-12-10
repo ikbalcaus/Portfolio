@@ -94,9 +94,10 @@ function fetchData() {
     `;
 
     const linksList = document.getElementById("links");
-    linksList.innerHTML = `
-      <li><p>Linkedin: <a href="${data.links.linkedin}" class="link" target="_blank">${data.links.linkedin}</a></p></li>
-      <li><p>Github: <a href="${data.links.github}" class="link" target="_blank">${data.links.github}</a></p></li>
-    `;
+    linksList.innerHTML = Object.keys(data.links).map(x => `
+      <li><p>${x.charAt(0).toUpperCase() + x.slice(1)}: 
+        <a href="${data.links[x]}" class="link" target="_blank">${data.links[x]}</a>
+      </p></li>
+    `).join("");
   });
 }
